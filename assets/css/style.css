@@ -1,3 +1,110 @@
-﻿body
-{
+﻿/*google font import*/
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+/*css variables*/
+:root {
+    --primary-font: "Jersey 10", sans-serif;
+    --secondary-font: "Public Sans", sans-serif;
+    --background-color: #000000; /*black*/
+    --primary-color: #FFBE0B; /*amber*/
+    --secondary-color: #FB5607; /*orange*/
+    --game-one-color: #FF006E; /*rose*/
+    --game-two-color: #8338EC; /*blue violet (purple)*/
+    --game-three-color: #3A86FF; /*azure*/
+}
+
+/*navigation customisation*/
+.navbar-custom {
+    font-family: var(--primary-font);
+    background-color: var(--background-color);
+    border: dashed;
+    border-color: var(--primary-color);
+}
+
+.navbar-custom .navbar-brand {
+    color: var(--primary-color);
+    font-size: 40px;
+    padding-left: 1em;
+}
+
+.navbar-custom .navbar-brand:hover {
+    color: var(--secondary-color);
+}
+
+.navbar-custom .navbar-list {
+    color: var(--primary-color);
+    font-size: 40px;
+    text-align: right;
+    padding-right: 1em;
+    list-style: none;
+    display: flex;
+}
+
+/*separate the list items for readability*/
+li {
+    margin: 5px;
+}
+
+/*hover animation*/
+.hover-underline {
+    color: var(--primary-color);
+    position: relative;
+    display: inline-block;
+}
+
+.hover-underline::after,
+.hover-underline::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #FFBE0B, #FB5607);
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease-out;
+}
+
+.hover-underline::before {
+    top: -5px;
+    transform-origin: left;
+}
+
+.hover-underline:hover::after,
+.hover-underline:hover::before {
+    transform: scaleX(1);
+}
+
+/*changes navigation list text colour*/
+.navbar-custom .navbar-list #home:hover,
+.navbar-custom .navbar-list #game1:hover,
+.navbar-custom .navbar-list #game2:hover,
+.navbar-custom .navbar-list #game3:hover {
+    color: var(--secondary-color);
+}
+
+/*footer customisation*/
+footer {
+    font-family: var(--primary-font);
+    background-color: var(--background-color);
+    border: dashed;
+    border-color: var(--primary-color);
+    text-align: center;
+    width: 100%;
+    position: fixed;
+}
+
+footer h1 {
+    color: var(--primary-color);
+}
+
+footer h1 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+footer h1 a:hover {
+    color: var(--secondary-color);
+    font-size: 120%;
 }
