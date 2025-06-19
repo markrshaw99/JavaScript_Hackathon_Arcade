@@ -84,6 +84,44 @@ li {
     color: var(--secondary-color);
 }
 
+/*main body*/
+main {
+    background-color: var(--background-color);
+}
+
+#games {
+    border:dashed var(--secondary-color);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    z-index: 50;
+}
+
+#game-block {
+    flex: 1;
+    height: 90%;
+    width: 33vw;
+    text-align: center;
+    background-color: var(--background-color);
+    font-family: var(--primary-font);
+    color: var(--primary-color);
+    margin: 5px 10px;
+}
+
+#game-block img {
+    height: 20vh;
+    width: 20vw;
+    margin: 5px;
+}
+
+.lp-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+
 /*footer customisation*/
 footer {
     font-family: var(--primary-font);
