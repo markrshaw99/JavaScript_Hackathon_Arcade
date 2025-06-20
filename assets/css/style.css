@@ -144,16 +144,28 @@ main {
     color: var(--game-one-color)!important;
 }
 
+#button-one:hover {
+    background: white;
+}
+
 #button-two {
     border-color: var(--game-two-color) !important;
     background: none;
     color: var(--game-two-color) !important;
 }
 
+#button-two:hover {
+    background: white;
+}
+
 #button-three {
     border-color: var(--game-three-color) !important;
     background: none;
     color: var(--game-three-color) !important;
+}
+
+#button-three:hover {
+    background: white;
 }
 
 /*footer customisation*/
