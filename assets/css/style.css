@@ -201,12 +201,14 @@ footer h1 a:hover {
     border-color: var(--game-two-color);
     width: auto;
     height: auto;
+    
 }
 
 #RPG-text {
     color:var(--game-two-color);
     text-align: center;
 }
+
 #RPG-game {
     background: url(../images/RPG/background.jpg) center;
     background-size: cover;
@@ -231,4 +233,34 @@ footer h1 a:hover {
     justify-self: flex-end;
     align-self: flex-end;
     transform:translateY(130px)
+}
+
+#RPG-health {
+    display: flex;
+    justify-content: space-between;
+    width: 105%;
+    height:auto;
+    margin-bottom: 10px;
+    transform:translate(-12px, -74px);
+    background-color: rgba(40, 100, 255, 0.6);
+    color:aliceblue;
+}
+
+#RPG-menu {
+    color:var(--game-two-color);
+    background-color: rgba(35, 0, 255, 0.1);
+    width: 500px;
+    height: 150px;
+}
+#RPG-menu button {
+    border-radius: 12px;
+    border: 1px solid var(--game-two-color);
+    color:#8338EC;
+    font-size: 100%;
+    margin: 5px;
+}
+
+#RPG-menu button:hover {
+    background: var(--game-two-color);
+    color: white;
 }
