@@ -241,7 +241,7 @@ footer h1 a:hover {
     width: 105%;
     height:auto;
     margin-bottom: 10px;
-    transform:translate(-12px, -74px);
+    transform:translate(-12px, -48px);
     background-color: rgba(40, 100, 255, 0.6);
     color:aliceblue;
 }
