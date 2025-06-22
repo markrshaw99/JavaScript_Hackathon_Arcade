@@ -1,12 +1,13 @@
 document.addEventListener("DOMContentLoaded", function() {
     //set background image here to pretend flickering
-    document.getElementById("RPG-game").style.backgroundImage = "url('../images/RPG/Background.jpg')";
+    document.getElementById("RPG-game").style.backgroundImage = "url('assets/images/RPG/Background.jpg')";
     document.getElementById("RPG-game").style.backgroundSize = "cover";
     document.getElementById("RPG-game").style.backgroundPosition = "center";
     document.getElementById("action1").addEventListener("click", action1);
     document.getElementById("action2").addEventListener("click", action2);
     document.getElementById("action3").addEventListener("click", action3);
     document.getElementById("action4").addEventListener("click", action4);
+    encounter();
 });
 
 const player = {
@@ -29,7 +30,7 @@ const enemyStats = {
 };
 
 const enemySpecies = ["Polaris", "Sukoro", "Incato", "Miniath"]
-const enemySprite = ["../images/RPG/Polaris.png", "../images/RPG/Suka.png", "../images/RPG/Incu.png", "../images/RPG/Miniath.png"]
+const enemySprite = ["assets/images/RPG/Polaris.png", "assets/images/RPG/Suka.png", "assets/images/RPG/Incu.png", "assets/images/RPG/Miniath.png"]
 const enemyHP= [40, 70, 50, 60];
 const enemyAttack = [30, 20, 50, 40];
 const enemyDef = [50, 20, 30, 60];
@@ -39,8 +40,8 @@ const enemyMagDef = [30, 50, 30, 10];
 
 
 function randomEnemy() {
-    let enemyType = Math.round(Math.random() * enemySpecies.length);
-    enemyMonster= document.getElementById("enemy-monster");
+    let enemyType = Math.floor(Math.random() * enemySpecies.length);
+    enemyMonster= document.getElementById("enemySprite");
     enemyMonster.src = enemySprite[enemyType];
     enemyMonster.alt = enemySpecies[enemyType];
     enemyStats.name = enemySpecies[enemyType];
@@ -49,14 +50,20 @@ function randomEnemy() {
     enemyStats.magAttack = enemyMagAttack[enemyType];
     enemyStats.physDef = enemyDef[enemyType];
     enemyStats.magDef = enemyMagDef[enemyType];
+    console.log("New enemy spawned:", enemyStats.name, "HP:", enemyStats.hp);
 }
 let enemyDefeated = 0;
 
 function updateHealth() {
-    playerHP = document.getElementById("playerHealth");
+    let playerHP = document.getElementById("playerHealth");
     playerHP.innerHTML = `HP: ${player.hp}`;
-    enemyHP = document.getElementById("enemyHealth");
+    let enemyHP = document.getElementById("enemyHealth");
+    console.log("playerHP:", playerHP, "enemyHP:", enemyHP);
+    if (!playerHP || !enemyHP) {
+        throw new Error("playerHP or enemyHP element not found!");
+    }
     enemyHP.innerHTML = `${enemyStats.name} HP: ${enemyStats.hp}`;
+    console.log("Player HP:", player.hp, "Enemy HP:", enemyStats.hp);
 }
 
 function action1() {
@@ -66,7 +73,6 @@ function action1() {
     enemyStats.hp = Math.max(enemyStats.hp, 0); // Ensure HP doesn't go below 0
     updateHealth();
     statusCheck();
-    enemyTurn();
 }
 function action2() {
     alert(`Kitsuro blasts ${enemyStats.name} with darkness!`);
@@ -75,14 +81,13 @@ function action2() {
     enemyStats.hp = Math.max(enemyStats.hp, 0); // Ensure HP doesn't go below 0
     updateHealth();
     statusCheck();
-    enemyTurn();
 }
 
 function action3() {
     alert('Kitsuro crouches low and braces herself!');
     player.physDef += 10;
     player.magDef += 10;
-    enemyTurn();
+    statusCheck();
 }
 
 function action4() {
@@ -92,7 +97,7 @@ function action4() {
         player.hp = 80; // Max HP
     }
     updateHealth();
-    enemyTurn();
+    statusCheck();
 }
 
 function statusCheck() {
@@ -104,11 +109,13 @@ function statusCheck() {
         alert("Kitsuro has been defeated! Run back to safety!");
         //add game over modal with high score option
         endGame();
+    } else {
+        enemyTurn();
     }
 }
 
 function encounter() {
-    if (enemyDefeated > 4) {
+    if (enemyDefeated >= 4) {
         alert("All the demons have been defeated! Advance forward, hero!");
         // Add in high score modal here
         endGame();
@@ -133,7 +140,11 @@ function enemyTurn() {
         player.hp = Math.max(player.hp, 0); // Ensure HP doesn't go below 0
     }
     updateHealth();
-    statusCheck();
+    if (player.hp <= 0) {
+        alert("Kitsuro has been defeated! Run back to safety!");
+        //add game over modal with high score option
+        endGame();
+    }
 }
 
 function endGame() {
@@ -143,4 +154,3 @@ function endGame() {
     document.getElementById("action4").removeEventListener("click", action4);
 }
 
-encounter();
