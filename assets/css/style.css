@@ -180,7 +180,7 @@ main {
 #runner {
     width: 600px;
     height: 600px;
-    border: 30px solid var(--game-one-color);
+    border: 40px solid var(--game-one-color);
     box-shadow: inset 0 0 0 5px var(--game-one-color);
     border-radius: 20px;
     position: relative;
