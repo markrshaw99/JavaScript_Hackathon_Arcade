@@ -85,7 +85,7 @@ class Pacman {
         c.beginPath()
         c.arc(this.position.x, this.position.y, this.radius,this.radians, Math.PI * 2 - this.radians)
         c.lineTo(this.position.x, this.position.y)
-        c.fillStyle = 'yellow'
+        c.fillStyle = '#FFBE0B'
         c.fill()
         c.closePath()
         c.restore()
@@ -127,7 +127,7 @@ class Pellet {
 class PowerUp {
     constructor({position}) {
         this.position = position
-        this.radius = 6
+        this.radius = 9
         this.time = 3000 // 5 seconds   
     }
     draw() {

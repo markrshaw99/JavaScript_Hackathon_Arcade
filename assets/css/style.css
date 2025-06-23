@@ -39,6 +39,7 @@
     padding-right: 1em;
     list-style: none;
     display: flex;
+    gap: 20px;
 }
 
 /*separate the list items for readability*/
