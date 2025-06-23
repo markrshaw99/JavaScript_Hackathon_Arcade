@@ -233,6 +233,114 @@ main {
 }
 
 /*game two css*/
+#RPG-container {
+    background-color: var(--background-color);
+    width: 600px;
+    height: 650px;
+    color: var(--game-two-color);
+    border: 20px solid var(--game-two-color);
+    box-shadow: inset 0 0 0 5px var(--game-two-color);
+    border-radius: 20px;
+    position: relative;
+    margin: auto;
+}
+    
+
+
+#RPG-text {
+    color:var(--game-two-color);
+    text-align: center;
+}
+
+#RPG-game {
+    background: url(../images/RPG/background.jpg) center;
+    background-size: cover;
+    height:300px;
+    width: 500px;
+}
+#RPG-game img {
+    width: 150px;
+    height:150px;
+}
+
+#player-monster {
+    display: flex;
+    width: 100%;
+    margin-bottom:10px;
+}
+
+#enemy-monster {
+    width: 100%;
+    display: flex;
+    flex-direction:row-reverse;
+    justify-self: flex-end;
+    align-self: flex-end;
+    transform:translateY(130px)
+}
+
+#RPG-health {
+    display: flex;
+    justify-content: space-between;
+    width: 105%;
+    height:auto;
+    margin-bottom: 10px;
+    transform:translate(-12px, -48px);
+    background-color: rgba(40, 100, 255, 0.6);
+    color:aliceblue;
+}
+
+#RPG-menu {
+    color:var(--game-two-color);
+    background-color: rgba(35, 0, 255, 0.1);
+    width: 500px;
+    height: 150px;
+}
+#RPG-menu button {
+    border-radius: 12px;
+    border: 1px solid var(--game-two-color);
+    color:#8338EC;
+    font-size: 100%;
+    margin: 5px;
+}
+
+#RPG-menu button:hover {
+    background: var(--game-two-color);
+    color: white;
+}
+
+#RPG-Victory {
+    display:none;
+    position:fixed;
+    color: var(--game-two-color);
+    text-align: center;
+    font-size: 150%;
+    margin-top: 20px;
+}
+#RPG-Victory .modal-content {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: var(--game-two-color);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#RPG-Defeat {
+    display:none;
+    position:fixed;
+    color: var(--game-two-color);
+    text-align: center;
+    font-size: 150%;
+    margin-top: 20px;
+}
+#RPG-Defeat .modal-content {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: var(--game-two-color);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.blackground {
+    background-color: var(--background-color);
+}
 
 /*game three css*/
 
@@ -422,8 +530,4 @@ footer h1 a {
 footer h1 a:hover {
     color: var(--secondary-color);
     font-size: 120%;
-}
-
-#Mainbody {
-    background-color: var(--background-color);
 }
