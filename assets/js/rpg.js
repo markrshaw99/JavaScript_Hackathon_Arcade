@@ -31,13 +31,20 @@ const enemyStats = {
 
 const enemySpecies = ["Polaris", "Sukoro", "Incato", "Miniath"]
 const enemySprite = ["assets/images/RPG/Polaris.png", "assets/images/RPG/Suka.png", "assets/images/RPG/Incu.png", "assets/images/RPG/Miniath.png"]
-const enemyHP= [40, 70, 50, 60];
+const enemyHP= [50, 80, 60, 70];
 const enemyAttack = [30, 20, 50, 40];
-const enemyDef = [50, 20, 30, 60];
+const enemyDef = [50, 30, 40, 60];
 const enemyMagAttack = [50, 60, 40, 50];
 const enemyMagDef = [30, 50, 30, 10];
 
+let textBox = document.getElementById("textBox");
+let confirm = document.getElementById("confirm");
 
+function resetConfirmListeners() {
+    let refreshConfirm = confirm.cloneNode(true);
+    confirm.parentNode.replaceChild(refreshConfirm, confirm);
+    confirm = refreshConfirm;
+}
 
 function randomEnemy() {
     let enemyType = Math.floor(Math.random() * enemySpecies.length);
@@ -67,46 +74,67 @@ function updateHealth() {
 }
 
 function action1() {
-    alert('Kitsuro bares her fangs!');
+    confirm.style.display = "block";
+    textBox.innerHTML= 'Kitsuro bares her fangs!';
     let damage = Math.round((player.physAttack * 30) / enemyStats.physDef);
     enemyStats.hp -= damage;
     enemyStats.hp = Math.max(enemyStats.hp, 0); // Ensure HP doesn't go below 0
     updateHealth();
-    statusCheck();
+    resetConfirmListeners();
+    confirm.addEventListener("click", function() {
+        statusCheck();
+    });
 }
 function action2() {
-    alert(`Kitsuro blasts ${enemyStats.name} with darkness!`);
+    confirm.style.display = "block";
+    textBox.innerHTML=`Kitsuro blasts ${enemyStats.name} with darkness!`;
     let damage = Math.round((player.magAttack * 30) / enemyStats.magDef);
     enemyStats.hp -= damage;
     enemyStats.hp = Math.max(enemyStats.hp, 0); // Ensure HP doesn't go below 0
     updateHealth();
-    statusCheck();
+    resetConfirmListeners();
+    confirm.addEventListener("click", function() {
+        statusCheck();
+    });
 }
 
 function action3() {
-    alert('Kitsuro crouches low and braces herself!');
+    confirm.style.display = "block";
+    textBox.innerHTML='Kitsuro crouches low and braces herself!';
     player.physDef += 10;
     player.magDef += 10;
-    statusCheck();
+    resetConfirmListeners();
+    confirm.addEventListener("click", function() {
+        statusCheck();
+    });
 }
 
 function action4() {
-    alert('You feed Kitsuro some sushi! Her HP is restored!');
+    confirm.style.display = "block";
+    textBox.innerHTML='You feed Kitsuro some sushi! Her HP is restored!';
     player.hp += 20;
     if (player.hp > 80) {
         player.hp = 80; // Max HP
     }
     updateHealth();
-    statusCheck();
+    resetConfirmListeners();
+    confirm.addEventListener("click", function() {
+        statusCheck();
+    });
 }
 
 function statusCheck() {
+    confirm.style.display = "block";
     if (enemyStats.hp <= 0) {
-        alert(`${enemyStats.name} has been defeated!`);
+        textBox.innerHTML=`${enemyStats.name} has been defeated!`;
         enemyDefeated++;
-        encounter();
+        resetConfirmListeners();
+        confirm.addEventListener("click", function() {
+            encounter();
+        });
     } else if (player.hp <= 0) {
-        alert("Kitsuro has been defeated! Run back to safety!");
+        confirm.style.display = "none";
+        textBox.innerHTML="Kitsuro has been defeated! Run back to safety!";
         //add game over modal with high score option
         endGame();
     } else {
@@ -116,35 +144,67 @@ function statusCheck() {
 
 function encounter() {
     if (enemyDefeated >= 4) {
-        alert("All the demons have been defeated! Advance forward, hero!");
+       textBox.innerHTML= 'All the demons have been defeated! Advance forward, hero!';
         // Add in high score modal here
         endGame();
     } else {
         randomEnemy();
         updateHealth();
-        alert(`Careful, a feral ${enemyStats.name} is in the way!`);
-    }
+        textBox.innerHTML= `Careful, a feral ${enemyStats.name} is in the way!`;
+        resetConfirmListeners();
+        confirm.addEventListener("click", function() {
+            confirm.style.display = "none";
+            textBox.innerHTML = "What will you do?";
+    });
+}
 }
 
 function enemyTurn() {
+    confirm.style.display = "block";
     let enemyAction = Math.floor(Math.random() * 2);
     if (enemyAction === 0) {
-        alert(`${enemyStats.name} attacks Kitsuro!`);
+        textBox.innerHTML=`${enemyStats.name} attacks Kitsuro!`;
         let damage = Math.round((enemyStats.physAttack * 30) / player.physDef);
         player.hp -= damage;
         player.hp = Math.max(player.hp, 0); // Ensure HP doesn't go below 0
+        resetConfirmListeners();
+        confirm.addEventListener("click", function() {
+            updateHealth();
+        }); 
+        if (player.hp <= 0) {
+            confirm.style.display = "none";
+            textBox.innerHTML="Kitsuro has been defeated! Run back to safety!";
+            //add game over modal with high score option
+            endGame();
+        }
+        else {
+            confirm.addEventListener("click", function() {
+                confirm.style.display = "none";
+                textBox.innerHTML = "What will you do?";
+            });
+     }
     } else {
-        alert(`${enemyStats.name} blasts Kitsuro with magic!`);
+        textBox.innerHTML=`${enemyStats.name} blasts Kitsuro with magic!`;
         let damage = Math.round((enemyStats.magAttack * 30) / player.magDef);
         player.hp -= damage;
         player.hp = Math.max(player.hp, 0); // Ensure HP doesn't go below 0
-    }
-    updateHealth();
-    if (player.hp <= 0) {
-        alert("Kitsuro has been defeated! Run back to safety!");
-        //add game over modal with high score option
-        endGame();
-    }
+        resetConfirmListeners();
+        confirm.addEventListener("click", function() {
+            updateHealth();
+        });
+        if (player.hp <= 0) {
+            confirm.style.display = "none";
+            textBox.innerHTML="Kitsuro has been defeated! Run back to safety!";
+            //add game over modal with high score option
+            endGame();
+        }
+        else {
+            confirm.addEventListener("click", function() {
+                confirm.style.display = "none";
+                textBox.innerHTML = "What will you do?";
+            });
+        }
+        }
 }
 
 function endGame() {
