@@ -7,38 +7,38 @@
     <title>Pacman</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/favicon/pacman.ico" type="image/x-icon">
-    <link rel="preload" as="image" href="assets/joystick/Central.png" />
-    <link rel="preload" as="image" href="assets/joystick/Forward.png" />
-    <link rel="preload" as="image" href="assets/joystick/Right.png" />
-    <link rel="preload" as="image" href="assets/joystick/Forward Right.png" />
-    <link rel="preload" as="image" href="assets/joystick/Backward.png" />
-    <link rel="preload" as="image" href="assets/joystick/Backward Right.png" />
-    <link rel="preload" as="image" href="assets/joystick/Left.png" />
-    <link rel="preload" as="image" href="assets/joystick/Backward Left.png" />
-    <link rel="preload" as="image" href="assets/joystick/Forward Left.png" />
+    <link rel="preload" as="image" href="assets/joystick/Central.png">
+    <link rel="preload" as="image" href="assets/joystick/Forward.png">
+    <link rel="preload" as="image" href="assets/joystick/Right.png">
+    <link rel="preload" as="image" href="assets/joystick/Forward Right.png">
+    <link rel="preload" as="image" href="assets/joystick/Backward.png">
+    <link rel="preload" as="image" href="assets/joystick/Backward Right.png">
+    <link rel="preload" as="image" href="assets/joystick/Left.png">
+    <link rel="preload" as="image" href="assets/joystick/Backward Left.png">
+    <link rel="preload" as="image" href="assets/joystick/Forward Left.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 </head>
 
 <body id="Mainbody">
-        <!--navigation bar-->
+    <!--navigation bar-->
     <nav class="navbar navbar-custom">
         <a class="navbar-brand" href="#">
             Hackathon Arcade
         </a>
         <ul class="navbar-list ms-auto">
             <li class="nav-item hover-underline">
-    <a id="home" class="nav-link active" href="index.html">Home</a>
-</li>
-<li class="nav-item hover-underline">
-    <a id="game1" class="nav-link" href="game-one.html">Game One </a>
-</li>
-<li class="nav-item hover-underline">
-    <a id="game2" class="nav-link" href="rpg.html">Game Two </a>
-</li>
-<li class="nav-item hover-underline">
-    <a id="game3" class="nav-link" href="pacman.html">Game Three </a>
-</li>
+                <a id="home" class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item hover-underline">
+                <a id="game1" class="nav-link" href="game-one.html">Game One </a>
+            </li>
+            <li class="nav-item hover-underline">
+                <a id="game2" class="nav-link" href="rpg.html">Game Two </a>
+            </li>
+            <li class="nav-item hover-underline">
+                <a id="game3" class="nav-link" href="pacman.html">Game Three </a>
+            </li>
         </ul>
     </nav>
     <div class="main-container">
@@ -51,7 +51,7 @@
                 <span>High Score: </span><span id="highScoreElement">0</span>
             </p>
         </div>
-        
+
         <div id="Pacman"><canvas tabindex="0"></canvas></div>
 
         <div class="control-panel">
@@ -64,7 +64,7 @@
         <label for="levelSelect" class="difficulty-label">
             <span class="pacman-icon">
             </span>
-        
+
         </label>
         <img src="./assets/images/ghost.png" alt="Pacman Icon" class="difficulty-pacman-img">
         <select id="levelSelect">
@@ -78,17 +78,18 @@
         <h1 id="credits">
             Website by
             <a href="https://github.com/markrshaw99" target="_blank" rel="noopener"
-               aria-label="Github (opens in new tab)">markrshaw99</a>,
+                aria-label="Github (opens in new tab)">markrshaw99</a>,
             <a href="https://github.com/BMileham98" target="_blank" rel="noopener"
-               aria-label="Github (opens in new tab)">BMileham98</a>,
+                aria-label="Github (opens in new tab)">BMileham98</a>,
             <a href="https://github.com/AbraWalker" target="_blank" rel="noopener"
-               aria-label="Github (opens in new tab)">AbraWalker</a>.
+                aria-label="Github (opens in new tab)">AbraWalker</a>.
         </h1>
 
     </footer>
     <!--Bootstrap Script-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
     <script src="./assets/js/joystick.js"></script>
     <script src="./assets/js/pacman.js"></script>
 </body>
