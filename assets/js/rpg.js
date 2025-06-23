@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     //set background image here to pretend flickering
-    document.getElementById("RPG-game").style.backgroundImage = "url('assets/images/RPG/Background.jpg')";
+    document.getElementById("RPG-game").style.backgroundImage = "url('./assets/images/RPG/Background.jpg')";
     document.getElementById("RPG-game").style.backgroundSize = "cover";
     document.getElementById("RPG-game").style.backgroundPosition = "center";
     document.getElementById("action1").addEventListener("click", action1);
