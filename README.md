@@ -1,5 +1,6 @@
 # js-hackathon-arcade
 
+The live site can be found [here](https://markrshaw99.github.io/JavaScript_Hackathon_Arcade/pacman.html/).
 
 ## Table of Contents
 
@@ -15,7 +16,7 @@
 
 For our Hackathon project, we agreed on recreating an arcade in the form of a website, contributing our own game ideas made using JavaScript.
 
-The live site can be found [here](https://abrawalker.github.io/js-hackathon-arcade/).
+The live site can be found [here](https://markrshaw99.github.io/JavaScript_Hackathon_Arcade/pacman.html/).
 
 ## Project Goal
 
