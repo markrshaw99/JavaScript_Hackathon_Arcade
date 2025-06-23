@@ -169,7 +169,7 @@ main {
 }
 
 /*game one relevant css*/
-main {
+#game-one-main {
     margin: 10px;
     display: flex;
     justify-content: center;
