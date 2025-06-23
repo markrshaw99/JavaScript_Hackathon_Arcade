@@ -531,3 +531,7 @@ footer h1 a:hover {
     color: var(--secondary-color);
     font-size: 120%;
 }
+
+#Mainbody {
+    background-color: var(--background-color);
+}
