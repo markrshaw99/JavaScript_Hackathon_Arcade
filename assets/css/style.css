@@ -253,7 +253,7 @@ main {
 }
 
 #RPG-game {
-    background: url(../images/RPG/background.jpg) center;
+    background: url("../images/RPG/background.jpg") center;
     background-size: cover;
     height:300px;
     width: 500px;
@@ -344,7 +344,7 @@ main {
 
 /*game three css*/
 
-body {
+#Mainbody {
     margin: 0;
     background: #111;
     overflow: hidden;
@@ -352,10 +352,11 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 50px
+    margin: 50px;
+    background-color: var(--background-color);
 }
 
-p {
+.PacmanParagraph {
     color: #fff;
     font-family: 'Press Start 2P', cursive, monospace;
     font-size: 1.2rem;
@@ -530,8 +531,4 @@ footer h1 a {
 footer h1 a:hover {
     color: var(--secondary-color);
     font-size: 120%;
-}
-
-#Mainbody {
-    background-color: var(--background-color);
 }
