@@ -195,14 +195,24 @@ footer h1 a:hover {
 
 /* RPG game customisation */
 #RPG-container {
-    font-family: var(--primary-font);
+    /*font-family: var(--primary-font);
     background-color: var(--background-color);
     border: dashed;
     border-color: var(--game-two-color);
     width: auto;
-    height: auto;
-    
+    height: auto; */
+    background-color: var(--background-color);
+    width: 600px;
+    height: 650px;
+    color: var(--game-two-color);
+    border: 20px solid var(--game-two-color);
+    box-shadow: inset 0 0 0 5px var(--game-two-color);
+    border-radius: 20px;
+    position: relative;
+    margin: auto;
 }
+    
+
 
 #RPG-text {
     color:var(--game-two-color);
@@ -263,4 +273,38 @@ footer h1 a:hover {
 #RPG-menu button:hover {
     background: var(--game-two-color);
     color: white;
+}
+
+#RPG-Victory {
+    display:none;
+    position:fixed;
+    color: var(--game-two-color);
+    text-align: center;
+    font-size: 150%;
+    margin-top: 20px;
+}
+#RPG-Victory .modal-content {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: var(--game-two-color);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#RPG-Defeat {
+    display:none;
+    position:fixed;
+    color: var(--game-two-color);
+    text-align: center;
+    font-size: 150%;
+    margin-top: 20px;
+}
+#RPG-Defeat .modal-content {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: var(--game-two-color);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.blackground {
+    background-color: var(--background-color);
 }

@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" 
           integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 </head>
-<body>
+<body class="blackground">
     <!--navigation bar-->
     <nav class="navbar navbar-custom">
         <a class="navbar-brand" href="#">
@@ -35,6 +35,34 @@
     </nav>
     <!-- RPG GAME CONTAINER STARTS HERE-->
     <main id="RPG-container">
+        <div id="RPG-Victory" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Victory!</h2>
+                <p>All the demons have been defeated! Engrave your name in the Hall of Champions, hero!</p>
+                <p class="highScoreTotal">Your final score is 0.</p>
+                <form>
+                    <label for="playerName">Name:</label>
+                    <input type="text" id="playerName" name="playerName" required>
+                    <button type="submit" class="btn">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div id="RPG-Defeat" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Defeat!</h2>
+                <p>Better luck next time! Please engrave your name for the history books.</p>
+                <p class="highScoreTotal">Your final score is 0.</p>
+                <form>
+                    <label for="playerName">Name:</label>
+                    <input type="text" id="playerName" name="playerName" required>
+                    <button type="submit" class="btn">Submit</button>
+                </form>
+                <button id="restartGame" class="btn">Restart Game</button>
+            </div>
+        </div>
+
         <div class="container">
             <h1 class="text-center" id="RPG-text">RPG Game</h1>
             <div class="container text-center" id= "RPG-game">
@@ -51,8 +79,8 @@
             </div>
             <div class="container" id="RPG-menu">
                 <div class="row text-center">
-                    <div class="col-8" id="textBox"><p>What will you do?</p></div>
-                    <div class="col-4" id="confirm"><button class="btn-sm">A</button></div>
+                    <div class="col-9" id="textBox"><p>What will you do?</p></div>
+                    <div class="col-3" id="confirm"><button class="btn-sm">A</button></div>
                     <div class="col-6"><button id="action1" class="btn">Bite</button></div>
                     <div class="col-6"><button id="action2" class="btn">Dark Blast</button></div>
                     <div class="col-6"><button id="action3" class="btn">Defend</button></div>

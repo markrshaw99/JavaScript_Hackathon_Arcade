@@ -60,6 +60,9 @@ function randomEnemy() {
     console.log("New enemy spawned:", enemyStats.name, "HP:", enemyStats.hp);
 }
 let enemyDefeated = 0;
+let score = 0;
+
+let highScoreMessage= document.getElementsByClassName("highScoreTotal")[0];
 
 function updateHealth() {
     let playerHP = document.getElementById("playerHealth");
@@ -128,12 +131,17 @@ function statusCheck() {
     if (enemyStats.hp <= 0) {
         textBox.innerHTML=`${enemyStats.name} has been defeated!`;
         enemyDefeated++;
+        score = score + ((10000 * player.hp) / 10);
+        console.log("Score:", score);
         resetConfirmListeners();
         confirm.addEventListener("click", function() {
             encounter();
         });
     } else if (player.hp <= 0) {
         confirm.style.display = "none";
+        lossModal = document.getElementById("RPG-Defeat");
+        highScoreMessage.innerHTML = `Your final score is: ${score}`;
+        lossModal.style.display = "block";
         textBox.innerHTML="Kitsuro has been defeated! Run back to safety!";
         //add game over modal with high score option
         endGame();
@@ -144,8 +152,9 @@ function statusCheck() {
 
 function encounter() {
     if (enemyDefeated >= 4) {
-       textBox.innerHTML= 'All the demons have been defeated! Advance forward, hero!';
-        // Add in high score modal here
+        modal = document.getElementById("RPG-Victory");
+        highScoreMessage.innerHTML = `Your final score is: ${score}`;
+        modal.style.display = "block";
         endGame();
     } else {
         randomEnemy();
@@ -167,44 +176,46 @@ function enemyTurn() {
         let damage = Math.round((enemyStats.physAttack * 30) / player.physDef);
         player.hp -= damage;
         player.hp = Math.max(player.hp, 0); // Ensure HP doesn't go below 0
+        updateHealth();
         resetConfirmListeners();
         confirm.addEventListener("click", function() {
-            updateHealth();
-        }); 
-        if (player.hp <= 0) {
-            confirm.style.display = "none";
-            textBox.innerHTML="Kitsuro has been defeated! Run back to safety!";
-            //add game over modal with high score option
-            endGame();
-        }
-        else {
-            confirm.addEventListener("click", function() {
+            if (player.hp <= 0) {
                 confirm.style.display = "none";
-                textBox.innerHTML = "What will you do?";
-            });
-     }
+                lossModal = document.getElementById("RPG-Defeat");
+                highScoreMessage.innerHTML = `Your final score is: ${score}`;
+                lossModal.style.display = "block";
+                endGame();
+            }
+            else {
+                confirm.addEventListener("click", function() {
+                    confirm.style.display = "none";
+                    textBox.innerHTML = "What will you do?";
+                });
+            }
+        });   
     } else {
         textBox.innerHTML=`${enemyStats.name} blasts Kitsuro with magic!`;
         let damage = Math.round((enemyStats.magAttack * 30) / player.magDef);
         player.hp -= damage;
         player.hp = Math.max(player.hp, 0); // Ensure HP doesn't go below 0
+        updateHealth();
         resetConfirmListeners();
         confirm.addEventListener("click", function() {
-            updateHealth();
-        });
-        if (player.hp <= 0) {
-            confirm.style.display = "none";
-            textBox.innerHTML="Kitsuro has been defeated! Run back to safety!";
-            //add game over modal with high score option
-            endGame();
-        }
-        else {
-            confirm.addEventListener("click", function() {
+            if (player.hp <= 0) {
                 confirm.style.display = "none";
-                textBox.innerHTML = "What will you do?";
-            });
-        }
-        }
+                lossModal = document.getElementById("RPG-Defeat");
+                highScoreMessage.innerHTML = `Your final score is: ${score}`;
+                lossModal.style.display = "block";
+                endGame();
+            }
+            else {
+                confirm.addEventListener("click", function() {
+                    confirm.style.display = "none";
+                    textBox.innerHTML = "What will you do?";
+                });
+            }
+        });
+    }
 }
 
 function endGame() {
@@ -213,4 +224,3 @@ function endGame() {
     document.getElementById("action3").removeEventListener("click", action3);
     document.getElementById("action4").removeEventListener("click", action4);
 }
-
