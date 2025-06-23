@@ -177,6 +177,12 @@ main {
     color: var(--game-one-color);
 }
 
+#instructions {
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+
 #runner {
     width: 600px;
     height: 600px;
@@ -194,6 +200,12 @@ main {
     margin: 5px;
     padding: 5px;
     text-align: start;
+}
+
+#hiScore {
+    margin: 5px;
+    padding: 5px;
+    text-align: end;
 }
 
 
@@ -218,6 +230,10 @@ main {
     position: absolute;
     bottom: 0;
 }
+
+/*game two css*/
+
+/*game three css*/
 
 /*footer customisation*/
 footer {
