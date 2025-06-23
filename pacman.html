@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacman</title>
+    <link rel="stylesheet" href="assets/styles/pacman.css">
+    <link rel="icon" href="assets/favicon/pacman.ico" type="image/x-icon">
+    <link rel="preload" as="image" href="assets/joystick/Central.png" />
+    <link rel="preload" as="image" href="assets/joystick/Forward.png" />
+    <link rel="preload" as="image" href="assets/joystick/Right.png" />
+    <link rel="preload" as="image" href="assets/joystick/Forward Right.png" />
+    <link rel="preload" as="image" href="assets/joystick/Backward.png" />
+    <link rel="preload" as="image" href="assets/joystick/Backward Right.png" />
+    <link rel="preload" as="image" href="assets/joystick/Left.png" />
+    <link rel="preload" as="image" href="assets/joystick/Backward Left.png" />
+    <link rel="preload" as="image" href="assets/joystick/Forward Left.png" />
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="score-row">
+            <div class="score-spacer"></div>
+            <p class="score-container">
+                <span>Score: </span><span id='scoreElement'>0</span>
+            </p>
+            <p class="highscore-container" id="highscoreBox">
+                <span>High Score: </span><span id="highScoreElement">0</span>
+            </p>
+        </div>
+        
+        <div id="Pacman"><canvas tabindex="0"></canvas></div>
+
+        <div class="control-panel">
+            <div class="joystick-container">
+                <img src="assets/joystick/Central.png" alt="Joystick" id="joystick">
+            </div>
+        </div>
+    </div>
+    <div class="difficulty-container">
+        <label for="levelSelect" class="difficulty-label">
+            <span class="pacman-icon">
+                <!-- (Optional: SVG Pac-Man here) -->
+            </span>
+            Difficulty:
+        </label>
+        <img src="./assets/images/ghost.png" alt="Pacman Icon" class="difficulty-pacman-img">
+        <select id="levelSelect">
+            <option>Easy</option>
+            <option>Medium</option>
+            <option>Hard</option>
+            <option>Insane</option>
+        </select>
+    </div>
+    <script src="assets/scripts/script.js"></script>
+    <script src="assets/scripts/pacman.js"></script>
+</body>
+
+</html>
