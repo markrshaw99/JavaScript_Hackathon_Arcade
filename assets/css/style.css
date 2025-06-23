@@ -99,7 +99,7 @@ main {
     background: url("../images/background.jpg");
 }
 
-#game-block {
+.game-block {
     background-color: rgb(0,0,0, 0.7); /*transparent black*/
     height: 100%;
     width: 33vw;
@@ -110,7 +110,7 @@ main {
     align-items: center;
 }
 
-#game-block img {
+.game-block img {
     height: 25vh;
     width: 25vw;
     margin: 5px;
