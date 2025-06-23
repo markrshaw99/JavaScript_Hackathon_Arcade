@@ -253,7 +253,7 @@ main {
 }
 
 #RPG-game {
-    background: url("../images/RPG/background.jpg") center;
+    background: url("../images/ghost.png") center;
     background-size: cover;
     height:300px;
     width: 500px;
