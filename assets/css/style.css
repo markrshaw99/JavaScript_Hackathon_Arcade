@@ -232,42 +232,7 @@ main {
 }
 
 /*game two css*/
-
-/*game three css*/
-
-/*footer customisation*/
-footer {
-    font-family: var(--primary-font);
-    background-color: var(--background-color);
-    border: dashed;
-    border-color: var(--primary-color);
-    text-align: center;
-    width: 100%;
-    position: fixed;
-}
-
-footer h1 {
-    color: var(--primary-color);
-}
-
-footer h1 a {
-    color: inherit;
-    text-decoration: none;
-}
-
-footer h1 a:hover {
-    color: var(--secondary-color);
-    font-size: 120%;
-}
-
-/* RPG game customisation */
 #RPG-container {
-    /*font-family: var(--primary-font);
-    background-color: var(--background-color);
-    border: dashed;
-    border-color: var(--game-two-color);
-    width: auto;
-    height: auto; */
     background-color: var(--background-color);
     width: 600px;
     height: 650px;
@@ -374,4 +339,31 @@ footer h1 a:hover {
 
 .blackground {
     background-color: var(--background-color);
+}
+
+/*game three css*/
+
+/*footer customisation*/
+footer {
+    font-family: var(--primary-font);
+    background-color: var(--background-color);
+    border: dashed;
+    border-color: var(--primary-color);
+    text-align: center;
+    width: 100%;
+    position: fixed;
+}
+
+footer h1 {
+    color: var(--primary-color);
+}
+
+footer h1 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+footer h1 a:hover {
+    color: var(--secondary-color);
+    font-size: 120%;
 }
