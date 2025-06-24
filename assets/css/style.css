@@ -571,6 +571,37 @@ main {
     color: #222;
 }
 
+.controls-list {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 12px 32px;
+    margin: 24px 0;
+    font-size: 1.5rem;
+    color: #FFBE0B;
+}
+
+.controls-list > div {
+    display: contents; /* Allows grid children to be direct grid items */
+}
+
+.control-key {
+    font-family: 'Press Start 2P', monospace;
+    background: #222;
+    color: #3A86FF;
+    padding: 4px 16px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 90px;
+    display: inline-block;
+}
+
+.control-desc {
+    font-family: var(--primary-font);
+    color: #FFBE0B;
+    text-align: left;
+    padding-left: 8px;
+}
+
 /*footer customisation*/
 footer {
     font-family: var(--primary-font);

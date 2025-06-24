@@ -12,10 +12,10 @@ document.getElementById('levelSelect').addEventListener('change', (e) => {
 let currentLevel = 'Easy';
 
 const levelModes = {
-    Easy:    { pelletScore: 10, ghostCount: 1, ghostSpeed: 2, ghostScore: 100 },
+    Easy:    { pelletScore: 10, ghostCount: 1, ghostSpeed: 4, ghostScore: 200 },
     Medium:  { pelletScore: 20, ghostCount: 2, ghostSpeed: 4, ghostScore: 200 },
     Hard:    { pelletScore: 30, ghostCount: 5, ghostSpeed: 5, ghostScore: 300 },
-    Insane:  { pelletScore: 50, ghostCount: 8, ghostSpeed: 5, ghostScore: 500 }
+    Insane:  { pelletScore: 50, ghostCount: 8, ghostSpeed: 5, ghostScore: 400 }
 };
 
 class Boundary {
@@ -826,18 +826,51 @@ function animate() {
 animate()
 
 addEventListener('keydown', (event) => {
-    // Prevent shortcuts if name modal is open or input is focused
+    // Ignore all controls except R (restart) when game is over
+    if (gameOver) {
+        if (event.key === 'r' || event.key === 'R') {
+            resetGame();
+        }
+        return;
+    }
+
     const modal = document.getElementById('nameModal');
     const input = document.getElementById('nameInput');
+    const controlsModal = document.getElementById('controlsModal');
+
+    // If name modal is open and input is focused, allow typing
     if (modal && modal.style.display === 'flex') {
-        // If input is focused, allow normal typing
         if (document.activeElement === input) return;
+    }
+
+    // If controls overlay is open, ignore spacebar and all game controls except Escape and C
+    if (controlsModal && controlsModal.style.display === 'flex') {
+        // Allow Escape and C to close the overlay, ignore other controls
+        if (event.key === 'Escape' || event.key === 'c' || event.key === 'C') {
+            // Let the Escape/C handler below run
+        } else {
+            return;
+        }
     }
 
     if (event.code === "Space") {
         togglePause();
         return;
     }
+     // C key: Toggle Controls Overlay
+    if (event.key === 'c' || event.key === 'C') {
+        event.preventDefault();
+        if (controlsModal.style.display === 'flex') {
+            controlsModal.style.display = 'none';
+            paused = false;
+            animate(); // Resume the game loop
+        } else {
+            controlsModal.style.display = 'flex';
+            paused = true;
+        }
+        return;
+    }
+
      // Q key: End game as though you lost
     if (event.key === 'q' || event.key === 'Q') {
         gameOver = true;
@@ -1241,3 +1274,31 @@ function togglePause(forcePlay = false) {
         if (!paused) animate();
     }
 }
+
+const controlsBtn = document.getElementById('controlsBtn');
+const controlsModal = document.getElementById('controlsModal');
+const controlsCloseBtn = document.getElementById('controlsCloseBtn');
+
+if (controlsBtn && controlsModal) {
+    controlsBtn.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent link navigation
+        controlsModal.style.display = 'flex';
+        paused = true;
+    });
+}
+
+// Add a close button inside the modal if you want (recommended for UX)
+if (controlsCloseBtn && controlsModal) {
+    controlsCloseBtn.addEventListener('click', () => {
+        controlsModal.style.display = 'none';
+        paused = false;
+    });
+}
+
+// Optional: Close with Escape key
+document.addEventListener('keydown', (e) => {
+    if (controlsModal && controlsModal.style.display === 'flex' && e.key === 'Escape') {
+        controlsModal.style.display = 'none';
+        paused = false;
+    }
+});

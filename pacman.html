@@ -28,6 +28,8 @@
         </a>
         <ul class="navbar-list ms-auto">
             <li class="nav-item hover-underline">
+                <a id="controlsBtn" class="nav-link active" href="#">Controls</a>            </li>
+            <li class="nav-item hover-underline">
                 <a id="home" class="nav-link active" href="index.html">Home</a>
             </li>
             <li class="nav-item hover-underline">
@@ -84,6 +86,21 @@
             <button id="nameSubmitBtn">OK</button>
         </div>
     </div>
+    <div id="controlsModal" class="modal-overlay" style="display:none;">
+        <div class="modal-content-banner">
+            <h2 class="EnterNameText";">Controls</h2>
+            <div class="controls-list">
+                <div><span class="control-key">Arrow Keys</span><span class="control-desc">Move Pacman</span></div>
+                <div><span class="control-key">Space</span><span class="control-desc">Pause/Resume</span></div>
+                <div><span class="control-key">N</span><span class="control-desc">Change Player Name</span></div>
+                <div><span class="control-key">D</span><span class="control-desc">Cycle Difficulty</span></div>
+                <div><span class="control-key">Q</span><span class="control-desc">Quit Game (Game Over)</span></div>
+                <div><span class="control-key">R</span><span class="control-desc">Restart Game</span></div>
+                <div><span class="control-key">C</span><span class="control-desc">Open/Close Controls</span></div>
+            </div>
+        </div>
+    </div>
+    <!-- Place this where you want the "Controls" button to appear -->
     <footer class="fixed-bottom">
         <h1 id="credits">
             Website by
