@@ -838,6 +838,11 @@ addEventListener('keydown', (event) => {
         togglePause();
         return;
     }
+     // Q key: End game as though you lost
+    if (event.key === 'q' || event.key === 'Q') {
+        gameOver = true;
+        return;
+    }
     // N key: Show Enter Name Banner
     if (event.key === 'n' || event.key === 'N') {
         event.preventDefault();
