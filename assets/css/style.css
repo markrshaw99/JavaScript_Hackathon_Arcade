@@ -420,12 +420,12 @@ main {
     position: fixed;
     bottom: 10vh;
     right: 2vw;      /* Adjust as needed to sit nicely to the right of the canvas */
-    width: 25vh;    /* Or your preferred size */
+    width: 30vh;    /* Or your preferred size */
     height: auto;
     z-index: 1000;
     margin: 0;
     left: auto;
-    filter: drop-shadow(0 0 12px #3A86FF) drop-shadow(0 0 6px #3A86FF);
+    filter: drop-shadow(0 0 10px #3A86FF) drop-shadow(0 0 6px #3A86FF);
 
 }
 

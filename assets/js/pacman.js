@@ -826,12 +826,40 @@ function animate() {
 animate()
 
 addEventListener('keydown', (event) => {
+    // Prevent shortcuts if name modal is open or input is focused
+    const modal = document.getElementById('nameModal');
+    const input = document.getElementById('nameInput');
+    if (modal && modal.style.display === 'flex') {
+        // If input is focused, allow normal typing
+        if (document.activeElement === input) return;
+    }
+
     if (event.code === "Space") {
-        paused = !paused;
-        if (!paused) {
-            animate(); // Resume animation
+        togglePause();
+        return;
+    }
+    // N key: Show Enter Name Banner
+    if (event.key === 'n' || event.key === 'N') {
+        event.preventDefault();
+        showNameModal('', function(name) {
+            playerName = name;
+            localStorage.setItem('pacmanPlayerName', playerName);
+            const nameSpan = document.getElementById('playerNameSpan');
+            if (nameSpan) nameSpan.textContent = playerName;
+        });
+        return;
+    }
+    // D key: Cycle Difficulty
+    if (event.key === 'd' || event.key === 'D') {
+        const select = document.getElementById('levelSelect');
+        if (select) {
+            let idx = select.selectedIndex;
+            idx = (idx + 1) % select.options.length;
+            select.selectedIndex = idx;
+            // Trigger change event
+            select.dispatchEvent(new Event('change'));
         }
-        return; // Prevent other actions on spacebar
+        return;
     }
     switch (event.key) {
         case 'ArrowUp':
@@ -1151,10 +1179,13 @@ function showNameModal(initialName, callback) {
     input.value = initialName || '';
     input.focus();
 
+    paused = true;
+
     function submit() {
         let name = input.value.trim();
         if (!name) name = 'Anonymous';
         modal.style.display = 'none';
+        togglePause(true); // Unpause and resume animation
         callback(name);
     }
 
@@ -1194,4 +1225,14 @@ function updatePacmanLeaderboard(name, score, difficulty) {
     leaderboard.sort((a, b) => b.score - a.score);
     leaderboard = leaderboard.slice(0, 10); // Keep top 10
     localStorage.setItem('pacmanLeaderboard', JSON.stringify(leaderboard));
+}
+
+function togglePause(forcePlay = false) {
+    if (forcePlay) {
+        paused = false;
+        animate();
+    } else {
+        paused = !paused;
+        if (!paused) animate();
+    }
 }
