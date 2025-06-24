@@ -66,12 +66,8 @@
                     <h2>Pacman</h2>
                     <img src="assets/images/PacmanPreview.JPG" alt="Pacman Game Preview" />
                     <button id="button-three" onclick="location.href = 'pacman.html'">Let's Play Game Three!</button>
-                    <h3>High Scores</h3>
-                    <p>10050</p>
-                    <p>9650</p>
-                    <p>5300</p>
-                    <p>3400</p>
-                    <p>3300</p>
+                    <h3>Leaderboard</h3>
+                    <ol id="pacman-leaderboard"></ol>
                 </div>
             </div>
         </section>
@@ -93,6 +89,20 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
         crossorigin="anonymous"></script>
+    <script>
+function renderPacmanLeaderboard() {
+    const leaderboard = JSON.parse(localStorage.getItem('pacmanLeaderboard') || '[]');
+    const ol = document.getElementById('pacman-leaderboard');
+    if (!ol) return;
+    ol.innerHTML = '';
+    leaderboard.forEach(entry => {
+        const li = document.createElement('li');
+        li.textContent = `${entry.name}: ${entry.score} (${entry.difficulty})`;
+        ol.appendChild(li);
+    });
+}
+renderPacmanLeaderboard();
+</script>
 </body>
 
 </html>

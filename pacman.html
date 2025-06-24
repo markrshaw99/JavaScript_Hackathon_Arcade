@@ -44,8 +44,8 @@
     <div class="main-container">
         <div class="score-row">
             <div class="score-spacer"></div>
-            <p class="PacmanName" class="PacmanParagraph">
-                <span>Player Name: </span><span>Mark</span>
+            <p class="PacmanName PacmanParagraph">
+                <span>Player Name: </span><span id="playerNameSpan">Mark</span>
             </p>
             <p class="score-container" class="PacmanParagraph">
                 <span>Score: </span><span id='scoreElement'>0</span>
@@ -76,6 +76,13 @@
             <option>Hard</option>
             <option>Insane</option>
         </select>
+    </div>
+    <div id="nameModal" class="modal-overlay" style="display:none;">
+        <div class="modal-content-banner">
+            <h2 class="EnterNameText">Enter Your Name</h2>
+            <input type="text" id="nameInput" maxlength="16" autocomplete="off" />
+            <button id="nameSubmitBtn">OK</button>
+        </div>
     </div>
     <footer class="fixed-bottom">
         <h1 id="credits">

@@ -450,6 +450,8 @@ function showWinScreen() {
     c.font = "bold 24px 'Press Start 2P', monospace";
     c.fillText("Press R to Restart", canvas.width / 2, canvas.height / 2 + 90);
     c.restore();
+
+    updatePacmanLeaderboard(playerName, score, currentLevel);
 }
 
 let gameOver = false;
@@ -469,6 +471,8 @@ function showGameOver() {
     c.font = "bold 24px 'Press Start 2P', monospace";
     c.fillText("Press R to Restart", canvas.width / 2, canvas.height / 2 + 100);
     c.restore();
+
+    updatePacmanLeaderboard(playerName, score, currentLevel); // <-- Pass currentLevel here
 }
 
 function animate() {
@@ -1138,3 +1142,56 @@ function resetGame() {
     animate();
 }
 resetGame();
+
+function showNameModal(initialName, callback) {
+    const modal = document.getElementById('nameModal');
+    const input = document.getElementById('nameInput');
+    const btn = document.getElementById('nameSubmitBtn');
+    modal.style.display = 'flex';
+    input.value = initialName || '';
+    input.focus();
+
+    function submit() {
+        let name = input.value.trim();
+        if (!name) name = 'Anonymous';
+        modal.style.display = 'none';
+        callback(name);
+    }
+
+    btn.onclick = submit;
+    input.onkeydown = (e) => {
+        if (e.key === 'Enter') submit();
+    };
+}
+
+// Usage on load:
+let playerName = localStorage.getItem('pacmanPlayerName') || '';
+showNameModal('', function(name) {
+    playerName = name;
+    localStorage.setItem('pacmanPlayerName', playerName);
+    const nameSpan = document.getElementById('playerNameSpan');
+    if (nameSpan) nameSpan.textContent = playerName;
+});
+
+// For changing name on click:
+const nameContainer = document.querySelector('.PacmanName');
+if (nameContainer) {
+    nameContainer.style.cursor = 'pointer';
+    nameContainer.title = 'Click to change player name';
+    nameContainer.addEventListener('click', () => {
+        showNameModal('', function(newName) {
+            playerName = newName;
+            localStorage.setItem('pacmanPlayerName', playerName);
+            const nameSpan = document.getElementById('playerNameSpan');
+            if (nameSpan) nameSpan.textContent = playerName;
+        });
+    });
+}
+
+function updatePacmanLeaderboard(name, score, difficulty) {
+    let leaderboard = JSON.parse(localStorage.getItem('pacmanLeaderboard') || '[]');
+    leaderboard.push({ name, score, difficulty });
+    leaderboard.sort((a, b) => b.score - a.score);
+    leaderboard = leaderboard.slice(0, 10); // Keep top 10
+    localStorage.setItem('pacmanLeaderboard', JSON.stringify(leaderboard));
+}
